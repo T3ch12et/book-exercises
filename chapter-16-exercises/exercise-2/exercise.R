@@ -12,13 +12,22 @@ library("ggplot2")
 
 # Draw a column (bar) chart of diamonds cuts by price, with each bar filled by 
 # clarity. You should see a _stacked_ bar chart.
-
+ggplot(diamonds) +  
+  geom_col(   
+    mapping = aes(x = cut, y = price, fill = clarity) 
+  )
 
 # Draw the same chart again, but with each element positioned to "fill" the y axis
-
+ggplot(diamonds) +  
+  geom_col(   
+    mapping = aes(x = cut, y = price, fill = clarity), position = "fill" 
+  )
 
 # Draw the same chart again, but with each element positioned to "dodge" each other
-
+ggplot(diamonds) +  
+  geom_col(   
+    mapping = aes(x = cut, y = price, fill = clarity), position = "dodge" 
+  )
 
 # Draw a plot with point geometry with the x-position mapped to `cut` and the 
 # y-position mapped to `clarity`
@@ -54,6 +63,9 @@ library("ggplot2")
 # by the clarity (Remember, this will take a while. Use a sample of the diamonds 
 # for faster results)
 
+#direction = -1 in aes to go opposite from light to dark or dark to light
+
+
 
 # Change the color of the previous plot using a ColorBrewer scale of your choice. 
 # What looks nice?
@@ -79,7 +91,10 @@ library("ggplot2")
 
 # Take the scatter plot of price by carat data (colored by clarity) and add 
 # _facets_ based on the diamond's `color`
-
+ggplot(data = diamonds_sample) +  
+  geom_point(   
+    mapping = aes(x = carat, y = price, color = color)) +
+    facet_wrap(~clarity)
 
 
 ## Saving Plots
